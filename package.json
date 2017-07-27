@@ -1,0 +1,25 @@
+{
+  "name": "code39form",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "jsakamoto",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/handlebars": "1.0.0",
+    "@types/jquery": "1.10.33",
+    "@types/jquery.cookie": "^1.4.29",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-typescript": "^3.2.1",
+    "gulp-uglify": "^3.0.0",
+    "handlebars": "2.0.0",
+    "jquery": "1.11",
+    "jquery.cookie": "^1.4.1",
+    "json3": "^3.3.2",
+    "merge-stream": "^1.0.1"
+  }
+}
