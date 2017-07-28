@@ -84,6 +84,7 @@ namespace Code39Form {
     function updateBarcodeImage(inputLine: InputLine): void {
         let $inputLine = $('div[data-line-id=' + inputLine.id + ']');
         $('.barcode-image', $inputLine).html('').barcode(inputLine.text, 'code39', { barWidth: 3, showHRI: false });
+        $('.human-readable .content', $inputLine).text(inputLine.text);
     }
 
     function updateUIState(): void {

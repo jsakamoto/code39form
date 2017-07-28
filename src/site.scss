@@ -24,9 +24,22 @@ button {
 }
 
 .input-line {
-    .barcode-image {
-        height: 64px;
-        margin-top: 8px;
+    .barcode-image-container {
+        display: inline-block;
+        
+        .barcode-image {
+            height: 64px;
+            margin-top: 8px;
+        }
+
+        .human-readable {
+            width: 100%;
+            font-family: sans-serif;
+            font-size: 1rem;
+            text-align: center;
+            margin-top: -8px;
+            display: none;
+        }
     }
 
     .control {
@@ -46,5 +59,25 @@ button {
     a {
         color: #888;
         font-weight: bold;        
+    }
+}
+
+@media print {
+    .input-line {
+        .barcode-image-container {
+            .human-readable {
+                display: block;
+            }
+        }
+
+        .control{
+            visibility: hidden;
+        }
+    }
+    .powered-by {
+        display: none;
+    }
+    button {
+        display: none;
     }
 }

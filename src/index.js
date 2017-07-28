@@ -56,6 +56,7 @@ var Code39Form;
     function updateBarcodeImage(inputLine) {
         var $inputLine = $('div[data-line-id=' + inputLine.id + ']');
         $('.barcode-image', $inputLine).html('').barcode(inputLine.text, 'code39', { barWidth: 3, showHRI: false });
+        $('.human-readable .content', $inputLine).text(inputLine.text);
     }
     function updateUIState() {
         $('.remove-input-line').toggleClass('disabled', inputLines.length < 2);
