@@ -42,14 +42,23 @@
         <button class="add-input-line" accesskey="a">add</button>
     </div>
 
-    <div class="powered-by">
-        powered by
-        <a href="https://github.com/jquery/jquery" target="_blank">jQuery</a>,
-        <a href="https://github.com/carhartl/jquery-cookie" target="_blank">jQuery Cookie</a>,
-        <a href="http://barcode-coder.com/en/barcode-jquery-plugin-201.html" target="_blank">jQuery Barcode</a>,
-        <a href="http://bestiejs.github.io/json3/" target="_blank">JSON3</a>,
-        <a href="http://www.handlebarsjs.com/" target="_blank">Handlebars</a>.
+    <div class="footer">
+        <div class="powered-by">
+            powered by
+            <a href="https://github.com/jquery/jquery" target="_blank">jQuery</a>,
+            <a href="https://github.com/carhartl/jquery-cookie" target="_blank">jQuery Cookie</a>,
+            <a href="http://barcode-coder.com/en/barcode-jquery-plugin-201.html" target="_blank">jQuery Barcode</a>,
+            <a href="http://bestiejs.github.io/json3/" target="_blank">JSON3</a>,
+            <a href="http://www.handlebarsjs.com/" target="_blank">Handlebars</a>.
+        </div>
+
+        <div class="repository-info">
+        </div>
     </div>
+
+    <script type="text/x-handlebars-template" id="repository-info-template">
+        <div>Source code is hosted on <a href="{{repositoryUrl}}" target="_blank">GitHub</a>.</div>
+    </script>
 
     <script src="vender.min.js"></script>
     <script src="index.min.js"></script>

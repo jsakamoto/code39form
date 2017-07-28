@@ -50,16 +50,21 @@ button {
     }
 }
 
-.powered-by {
+.powered-by,  .repository-info {
     font-family: sans-serif;
     font-size: 9pt;
-    margin-top: 60px;
     color: #888;
+    height: 20pt;
+    line-height: 20pt;
     
     a {
         color: #888;
         font-weight: bold;        
     }
+}
+
+.footer {
+    margin-top: 60px;
 }
 
 @media print {
@@ -74,7 +79,7 @@ button {
             visibility: hidden;
         }
     }
-    .powered-by {
+    .powered-by, .repository-info {
         display: none;
     }
     button {

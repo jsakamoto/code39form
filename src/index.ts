@@ -31,6 +31,18 @@ namespace Code39Form {
     });
     updateUIState();
 
+    // Show repository information if I'm on GitHub pages.
+    var matches = location.hostname.match(/^([^.]+)\.github\.io$/i);
+    if (matches != null) {
+        let ownerName = matches[1];
+        let projectName = location.pathname.split('/').filter(s => s != '').shift();
+        let repositoryUrl = `https://github.com/${ownerName}/${projectName}`;
+        let source = $("#repository-info-template").html();
+        let template = Handlebars.compile(source);
+        let html = template({ repositoryUrl });
+        $('.repository-info').html(html);
+    }
+
     // Wire up event handlers.
 
     $(document).on('click', '.add-input-line', () => {

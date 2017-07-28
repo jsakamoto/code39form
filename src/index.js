@@ -12,6 +12,16 @@ var Code39Form;
         updateBarcodeImage(inputLine);
     });
     updateUIState();
+    var matches = location.hostname.match(/^([^.]+)\.github\.io$/i);
+    if (matches != null) {
+        var ownerName = matches[1];
+        var projectName = location.pathname.split('/').filter(function (s) { return s != ''; }).shift();
+        var repositoryUrl = "https://github.com/" + ownerName + "/" + projectName;
+        var source_1 = $("#repository-info-template").html();
+        var template_1 = Handlebars.compile(source_1);
+        var html = template_1({ repositoryUrl: repositoryUrl });
+        $('.repository-info').html(html);
+    }
     $(document).on('click', '.add-input-line', function () {
         var newId = inputLines.map(function (l) { return l.id; }).reduce(function (prev, current) { return Math.max(prev, current); }) + 1;
         var newLine = { id: newId, text: '' };
