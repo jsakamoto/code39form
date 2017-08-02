@@ -8,6 +8,11 @@
 
 "CODE 39 form" also works with Kindle (1st generation) experiment web browser.
 
+## Features
+
+- Printable (optimized for A4 size)
+- Offline work (you should bookmark CODE39 Form site URL.)
+
 ## How to build
 
 ### Prerequire
