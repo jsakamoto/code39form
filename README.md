@@ -6,6 +6,8 @@
 
 "CODE39 Form" is a HTML application that allows you to generate CODE39 barcode on your web browser screen.
 
+![screen shot of application](.asset/fig1.png)
+
 "CODE 39 form" also works with Kindle (1st generation) experiment web browser.
 
 ## Features
