@@ -23,18 +23,19 @@ namespace Code39Form {
     let source = $("#line-template").html();
     let template = Handlebars.compile(source);
 
+    var langPack = (languagePacks || {})[window.navigator.language] || {};
+
     // Initial display view.
     inputLines.forEach(inputLine => {
         let html = template(inputLine);
         $inputLinesContainer.append(html);
         updateBarcodeImage(inputLine);
     });
+    updateUIState();
 
     let userAgentParts = window.navigator.userAgent.split(/[ ,/;:()]/);
     let browserIsKindle = userAgentParts.indexOf('Kindle') != -1;
     $(document.body).toggleClass('print-disabled', browserIsKindle);
-
-    updateUIState();
 
     // Show repository information if I'm on GitHub pages.
     var matches = location.hostname.match(/^([^.]+)\.github\.io$/i);
@@ -66,7 +67,8 @@ namespace Code39Form {
         let $inputLine = $(e.target).closest('.input-line');
         let lineId = $inputLine.data('line-id');
         if ($('.input-line').length < 2) return;
-        if (!confirm('Are you sure?')) {
+        let prompt = 'Are you sure you want to remove it?';
+        if (!confirm(langPack[prompt] || prompt)) {
             setFocus(lineId);
             return;
         }
@@ -110,6 +112,7 @@ namespace Code39Form {
 
     function updateUIState(): void {
         $('.remove-input-line').toggleClass('disabled', inputLines.length < 2);
+        localizeText(langPack);
     }
 
     function setFocus(id: number): void {
@@ -135,6 +138,12 @@ namespace Code39Form {
         return storageService;
     }
 
+    function localizeText(langPack: any): void {
+        $('.x-lang').each((i, elem) => {
+            let text = $(elem).text();
+            $(elem).text(langPack[text] || text).removeClass('.x-lang');
+        });
+    }
 
     // Global error handling.
     window.onerror = <any>function (message: string, url?: string, lineNumber?: number, columnNumber?: number, exception?: Error) {

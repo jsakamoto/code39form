@@ -6,15 +6,16 @@ var Code39Form;
     var $inputLinesContainer = $('.input-lines-container');
     var source = $("#line-template").html();
     var template = Handlebars.compile(source);
+    var langPack = (Code39Form.languagePacks || {})[window.navigator.language] || {};
     inputLines.forEach(function (inputLine) {
         var html = template(inputLine);
         $inputLinesContainer.append(html);
         updateBarcodeImage(inputLine);
     });
+    updateUIState();
     var userAgentParts = window.navigator.userAgent.split(/[ ,/;:()]/);
     var browserIsKindle = userAgentParts.indexOf('Kindle') != -1;
     $(document.body).toggleClass('print-disabled', browserIsKindle);
-    updateUIState();
     var matches = location.hostname.match(/^([^.]+)\.github\.io$/i);
     if (matches != null) {
         var ownerName = matches[1];
@@ -40,7 +41,8 @@ var Code39Form;
         var lineId = $inputLine.data('line-id');
         if ($('.input-line').length < 2)
             return;
-        if (!confirm('Are you sure?')) {
+        var prompt = 'Are you sure you want to remove it?';
+        if (!confirm(langPack[prompt] || prompt)) {
             setFocus(lineId);
             return;
         }
@@ -76,6 +78,7 @@ var Code39Form;
     }
     function updateUIState() {
         $('.remove-input-line').toggleClass('disabled', inputLines.length < 2);
+        localizeText(langPack);
     }
     function setFocus(id) {
         $("#barcode-input-" + id).focus();
@@ -96,6 +99,12 @@ var Code39Form;
             };
         }
         return storageService;
+    }
+    function localizeText(langPack) {
+        $('.x-lang').each(function (i, elem) {
+            var text = $(elem).text();
+            $(elem).text(langPack[text] || text).removeClass('.x-lang');
+        });
     }
     window.onerror = function (message, url, lineNumber, columnNumber, exception) {
         exception = exception || { message: message, stack: (url || '- unknown souce file -') + "(" + lineNumber + ":" + columnNumber + ")" };

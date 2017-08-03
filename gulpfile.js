@@ -9,7 +9,9 @@ var merge = require('merge-stream');
 
 var bundleconfig = [
     {
-        "inputFiles": ["./src/index.js"],
+        "inputFiles": [
+            "./src/language-pack/*.js",
+            "./src/index.js"],
         "uglify": true,
         "outputFileName": "index.min.js"
     },
