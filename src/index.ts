@@ -29,6 +29,11 @@ namespace Code39Form {
         $inputLinesContainer.append(html);
         updateBarcodeImage(inputLine);
     });
+
+    let userAgentParts = window.navigator.userAgent.split(/[ ,/;:()]/);
+    let browserIsKindle = userAgentParts.indexOf('Kindle') != -1;
+    $(document.body).toggleClass('print-disabled', browserIsKindle);
+
     updateUIState();
 
     // Show repository information if I'm on GitHub pages.
@@ -91,6 +96,10 @@ namespace Code39Form {
             }
 
         }, 0);
+    });
+
+    $(document).on('click', '.print', () => {
+        window.print();
     });
 
     function updateBarcodeImage(inputLine: InputLine): void {

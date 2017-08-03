@@ -11,6 +11,9 @@ var Code39Form;
         $inputLinesContainer.append(html);
         updateBarcodeImage(inputLine);
     });
+    var userAgentParts = window.navigator.userAgent.split(/[ ,/;:()]/);
+    var browserIsKindle = userAgentParts.indexOf('Kindle') != -1;
+    $(document.body).toggleClass('print-disabled', browserIsKindle);
     updateUIState();
     var matches = location.hostname.match(/^([^.]+)\.github\.io$/i);
     if (matches != null) {
@@ -62,6 +65,9 @@ var Code39Form;
                 storageService.put('inputLines', JSON.stringify(inputLines));
             }
         }, 0);
+    });
+    $(document).on('click', '.print', function () {
+        window.print();
     });
     function updateBarcodeImage(inputLine) {
         var $inputLine = $('div[data-line-id=' + inputLine.id + ']');
