@@ -1,8 +1,18 @@
 CACHE MANIFEST
-# revision: 2fbff30d-6fdc-4801-81e7-599416e3214e
+# revision: 8a6da1b1-cdb5-4457-ab69-f52ca4fd0246
 
 CACHE:
 index.html
 site.css
 vender.min.js
 index.min.js
+content/favicons/android-chrome-72x72.png
+content/favicons/apple-touch-icon.png
+content/favicons/browserconfig.xml
+content/favicons/favicon-16x16.png
+content/favicons/favicon-32x32.png
+content/favicons/favicon-base.png
+content/favicons/favicon.ico
+content/favicons/manifest.json
+content/favicons/mstile-150x150.png
+content/favicons/safari-pinned-tab.svg
